@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        /* css 代码  */
+    </style>
+    <script src="./js/jquery-1.10.2.js"></script>
+    <script src="./js/highcharts.js"></script>
+</head>
+<body>
+<form>
+    查询时间:<select name="time">
+    <option value="10">10分钟</option>
+    <option value="20">20分钟</option>
+    <option value="30">30分钟</option>
+    <option value="60">60分钟</option>
+    <option value="120">120分钟</option>
+    <option value="240">240分钟</option>
+</select>
+    分成几次:<input type="text" name="num">
+    <input type="submit" value="提交">
+</form>
+<div id="container" style="min-width:400px;height:400px"></div>
+<script>
+    $(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: '脚本时间统计'
+            },
+            subtitle: {
+                text: '根据字段匹配'
+            },
+            xAxis: {
+                categories: [1,2,3,4,5,6,7,8,9,10]            },
+            yAxis: {
+                title: {
+                    text: 'Time (ms)'
+                }
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series: [
+                {name: 'time_db_get_t_user',data: [3.8,4,6,4.67,24,4.5,0,50.67,44.8,38.5]},{name: 'time_db_get_t_ucloud',data: [1.2,1,1,1.33,10,0.88,0,4.83,7.4,5]},{name: 'TotalCost',data: [18,10,54,49,88,88.38,0,63.67,59.2,113]}            ]
+        });
+    });
+</script>
+</body>
+</html>
